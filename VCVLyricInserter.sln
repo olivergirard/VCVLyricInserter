@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCVLyricInserter", "VCVLyricInserter.csproj", "{34141C7E-7436-4209-BAA0-17687D8856B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{C7E7DFFD-EE01-4C10-81A9-BBC8DADDD9C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtauVoiceBank", "..\..\..\Documents\Visual Studio 2022\utauPlugin\utauPlugin-master\UtauVoiceBank\UtauVoiceBank\UtauVoiceBank.csproj", "{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utauPlugin", "..\..\..\Documents\Visual Studio 2022\utauPlugin\utauPlugin-master\utauPlugin\utauPlugin.csproj", "{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave", "..\..\..\Documents\Visual Studio 2022\utauPlugin\utauPlugin-master\Wave\Wave\Wave.csproj", "{C0CC431F-2A53-4CCB-9026-451570C7ACE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		UTAU Mass Envelope Editor plugin|Any CPU = UTAU Mass Envelope Editor plugin|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34141C7E-7436-4209-BAA0-17687D8856B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34141C7E-7436-4209-BAA0-17687D8856B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34141C7E-7436-4209-BAA0-17687D8856B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34141C7E-7436-4209-BAA0-17687D8856B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34141C7E-7436-4209-BAA0-17687D8856B9}.UTAU Mass Envelope Editor plugin|Any CPU.ActiveCfg = Release|Any CPU
+		{34141C7E-7436-4209-BAA0-17687D8856B9}.UTAU Mass Envelope Editor plugin|Any CPU.Build.0 = Release|Any CPU
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}.UTAU Mass Envelope Editor plugin|Any CPU.ActiveCfg = UTAU Mass Envelope Editor plugin|Any CPU
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309}.UTAU Mass Envelope Editor plugin|Any CPU.Build.0 = UTAU Mass Envelope Editor plugin|Any CPU
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}.UTAU Mass Envelope Editor plugin|Any CPU.ActiveCfg = UTAU Mass Envelope Editor plugin|Any CPU
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD}.UTAU Mass Envelope Editor plugin|Any CPU.Build.0 = UTAU Mass Envelope Editor plugin|Any CPU
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8}.UTAU Mass Envelope Editor plugin|Any CPU.ActiveCfg = UTAU Mass Envelope Editor plugin|Any CPU
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8}.UTAU Mass Envelope Editor plugin|Any CPU.Build.0 = UTAU Mass Envelope Editor plugin|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34141C7E-7436-4209-BAA0-17687D8856B9} = {C7E7DFFD-EE01-4C10-81A9-BBC8DADDD9C0}
+		{3CD4045E-4D2D-4FBE-B3EB-A950EFC15309} = {C7E7DFFD-EE01-4C10-81A9-BBC8DADDD9C0}
+		{C08197D8-8323-4E6E-AAB4-F0B57CC304BD} = {C7E7DFFD-EE01-4C10-81A9-BBC8DADDD9C0}
+		{C0CC431F-2A53-4CCB-9026-451570C7ACE8} = {C7E7DFFD-EE01-4C10-81A9-BBC8DADDD9C0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E7473D7-5763-43F4-83F5-544A660EEA35}
+	EndGlobalSection
+EndGlobal
