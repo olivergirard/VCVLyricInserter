@@ -1,0 +1,64 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "VCVLyricInserter/1.0.0": {
+        "dependencies": {
+          "UtauVoiceBank": "1.0.0",
+          "Wave": "1.0.0",
+          "utauPlugin": "1.0.0"
+        },
+        "runtime": {
+          "VCVLyricInserter.dll": {}
+        }
+      },
+      "utauPlugin/1.0.0": {
+        "dependencies": {
+          "UtauVoiceBank": "1.0.0"
+        },
+        "runtime": {
+          "utauPlugin.dll": {}
+        }
+      },
+      "UtauVoiceBank/1.0.0": {
+        "dependencies": {
+          "Wave": "1.0.0"
+        },
+        "runtime": {
+          "UtauVoiceBank.dll": {}
+        }
+      },
+      "Wave/1.0.0": {
+        "runtime": {
+          "Wave.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VCVLyricInserter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "utauPlugin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UtauVoiceBank/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Wave/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

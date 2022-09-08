@@ -1,0 +1,23 @@
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.csproj.AssemblyReference.cache
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.AssemblyInfoInputs.cache
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.AssemblyInfo.cs
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.csproj.CoreCompileInputs.cache
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.dll
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\refint\VCVLyricInserter.dll
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.pdb
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\VCVLyricInserter.exe
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\VCVLyricInserter.deps.json
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\VCVLyricInserter.runtimeconfig.json
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\VCVLyricInserter.runtimeconfig.dev.json
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\VCVLyricInserter.dll
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\VCVLyricInserter.pdb
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\utauPlugin.dll
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\UtauVoiceBank.dll
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\Wave.dll
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\utauPlugin.pdb
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\UtauVoiceBank.pdb
+C:\Users\azure\source\repos\VCVLyricInserter\UTAU VCVLyricInserter plugin\Debug\net5.0\Wave.pdb
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.csproj.CopyComplete
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\VCVLyricInserter.genruntimeconfig.cache
+C:\Users\azure\source\repos\VCVLyricInserter\obj\Debug\net5.0\ref\VCVLyricInserter.dll
