@@ -17,12 +17,12 @@ namespace VCVLyricInserter
             UtauPlugin utauPlugin = new UtauPlugin(args[0]);
             utauPlugin.Input();
 
-            VCV();
+            VCV(utauPlugin);
 
             utauPlugin.Output();
         }
 
-        static void VCV()
+        static void VCV(UtauPlugin utauPlugin)
         {
 
             Console.WriteLine("Enter your VCV characters in the following format:\n");
@@ -30,58 +30,69 @@ namespace VCVLyricInserter
 
             string characters = Console.ReadLine();
 
-            string removedUnderscores = "";
-
             /* removes underscores */
 
-            try
-            {
-                if (characters.Contains('_') == false)
-                {
-                    Console.WriteLine("It seems there was an error. Please make sure your lyrics are formatted correctly and try again.");
-                    VCV();
-                }
+           if (characters.Contains('_') == false)
+           {
+               Console.WriteLine("It seems there was an error. Please make sure your lyrics are formatted correctly and try again.");
+               VCV(utauPlugin);
+           }
 
-                while (characters.Contains('_'))
-                {
-                    removedUnderscores += characters.Substring(0, 2);
-                    characters = characters.Substring(3);
-                }
-
-                removedUnderscores += characters;
-
-            } catch (Exception)
-            {
-                Console.WriteLine("It seems there was an error. Please make sure your lyrics are formatted correctly and try again.");
-                VCV();
-            }
-
-            char firstSound = char.Parse(removedUnderscores.Substring(2, 3));
-            string final = "";
+            char firstSound = char.Parse(characters.Substring(2, 3));
 
             if (((firstSound >= 65) && (firstSound <= 90)) || ((firstSound <= 97) && (firstSound <= 122)))
             {
                 /* usage of ASCII characters */
 
-                final = Romaji(removedUnderscores);
+                Romaji(characters, utauPlugin);
             } else
             {
                 /* usage of Shift-JIS characters */
 
-                final = Hiragana(removedUnderscores);
+                Hiragana(characters, utauPlugin);
             }
-
-            Console.WriteLine("Your Hiragana VCV output is:\n");
-            Console.WriteLine(final);
         }
 
-        static string Romaji(string removedUnderscores)
+        static void Romaji(string characters, UtauPlugin utauPlugin)
         {
 
         }
-        static string Hiragana(string removedUnderscores)
+        static void Hiragana(string characters, UtauPlugin utauPlugin)
         {
 
+            //TODO exception handling during debug testing
+
+            string lyric = "";
+            int index = 0;
+
+            while (characters.Contains('_'))
+            {
+                lyric += characters.Substring(0, 1);
+                lyric += " ";
+                characters = characters.Substring(1);
+                
+                if ((characters.Substring(0, 2)).Contains('_'))
+                {
+                    /* short vowels */
+
+                    lyric += characters.Substring(0, 1);
+                    characters = characters.Substring(2);
+
+                } else
+                {
+                    /* long vowels */
+
+                    lyric += characters.Substring(0, 2);
+                    characters = characters.Substring(3);
+                }
+                Note note = utauPlugin.note[index];
+
+                note.SetLyric(lyric);
+
+                lyric = "";
+                index++;
+            }
         }
+            
     }
 }
