@@ -6,17 +6,36 @@ using System.Text;
 
 namespace VCVLyricInserter
 {
+
+    //TODO work on ignoring rests, notes with lyric "R" or "r"
     class Program
     {
-        static string[] A = { "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ", "が", "ざ", "だ", "ば", "ぱ", "きゃ", "ぎゃ", "にゃ", "ひゃ", "びゃ", "ぴゃ", "みゃ", "りゃ", "じゃ", "ちゃ", "しゃ" };
 
-        static string[] I = {"い", "き", "し", "ち", "に", "ひ", "み", "り", "ぎ", "じ", "び", "ぴ" };
+        /* hiragana arrays */
 
-        static string[] U = { "う", "く", "す", "つ", "ぬ", "ふ", "む", "ゆ", "る", "ぐ", "ず", "ぶ", "ぷ", "きゅ", "ぎゅ", "にゅ", "ひゅ", "びゅ", "ぴゅ", "みゅ", "りゅ", "じゅ", "ちゅ", "しゅ" };
+        static string[] hiraganaA = { "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ", "が", "ざ", "だ", "ば", "ぱ", "きゃ", "ぎゃ", "にゃ", "ひゃ", "びゃ", "ぴゃ", "みゃ", "りゃ", "じゃ", "ちゃ", "しゃ" };
 
-        static string[] E = { "え", "け", "せ", "て", "ね", "へ", "め", "れ", "げ", "ぜ", "で", "べ", "ぺ", "じぇ", "ちぇ", "しぇ" };
+        static string[] hiraganaI = {"い", "き", "し", "ち", "に", "ひ", "み", "り", "ぎ", "じ", "び", "ぴ" };
 
-        static string[] O = { "お", "こ", "そ", "と", "の", "ほ", "も", "よ", "ろ", "を", "ご", "ぞ", "ど", "ぼ", "ぽ", "きょ", "ぎょ", "にょ", "ひょ", "びょ", "ぴょ", "みょ", "りょ", "ちょ", "じょ", "しょ" };
+        static string[] hiraganaU = { "う", "く", "す", "つ", "ぬ", "ふ", "む", "ゆ", "る", "ぐ", "ず", "ぶ", "ぷ", "きゅ", "ぎゅ", "にゅ", "ひゅ", "びゅ", "ぴゅ", "みゅ", "りゅ", "じゅ", "ちゅ", "しゅ" };
+
+        static string[] hiraganaE = { "え", "け", "せ", "て", "ね", "へ", "め", "れ", "げ", "ぜ", "で", "べ", "ぺ", "じぇ", "ちぇ", "しぇ" };
+
+        static string[] hiraganaO = { "お", "こ", "そ", "と", "の", "ほ", "も", "よ", "ろ", "を", "ご", "ぞ", "ど", "ぼ", "ぽ", "きょ", "ぎょ", "にょ", "ひょ", "びょ", "ぴょ", "みょ", "りょ", "ちょ", "じょ", "しょ" };
+
+        /* romaji arrays */
+
+        static string[] romajiA = { "a", "ka", "sa", "ta", "na", "ha", "ma", "ya", "ra", "wa", "ga", "za", "da", "ba", "pa", "kya", "gya", "nya", "hya", "bya", "pya", "mya", "rya", "ja", "cha", "sha" };
+
+        static string[] romajiI = { "i", "ki", "shi", "chi", "ni", "hi", "mi", "ri", "gi", "ji", "bi", "pi" };
+
+        static string[] romajiU = { "u", "ku", "su", "tsu", "nu", "fu", "mu", "yu", "ru", "gu", "zu", "bu", "pu", "kyu", "gyu", "nyu", "hyu", "byu", "pyu", "myu", "ryu", "ju", "chu", "shu" };
+
+        static string[] romajiE = { "e", "ke", "se", "te", "ne", "he", "me", "re", "ge", "ze", "de", "be", "pe", "je", "che", "she" };
+
+        static string[] romajiO = { "o", "ko", "so", "to", "no", "ho", "mo", "yo", "ro", "wo", "go", "zo", "do", "bo", "po", "kyo", "gyo", "nyo", "hyo", "byo", "pyo", "myo", "ryo", "cho", "jo", "sho" };
+
+        /* main function necessary for execution */
 
         static void Main(string[] args)
         {
@@ -32,11 +51,13 @@ namespace VCVLyricInserter
             utauPlugin.Output();
         }
 
+        /* VCV conversion function */
+
         static void VCV(UtauPlugin utauPlugin)
         {
 
-            Console.WriteLine("Enter your VCV characters in the following format:\n");
-            Console.WriteLine("<hiragana/romaji character> <hiragana/romaji character>");
+            Console.WriteLine("Enter your VCV characters in the following format. There should be a space after EVERY phoneme.\n");
+            Console.WriteLine("<hiragana/romaji character> <hiragana/romaji character> ");
 
             string characters = Console.ReadLine();
 
@@ -50,27 +71,51 @@ namespace VCVLyricInserter
 
             char firstSound = char.Parse(characters.Substring(0, 1));
 
-            if (((firstSound >= 65) && (firstSound <= 90)) || ((firstSound <= 97) && (firstSound <= 122)))
-            {
-                /* usage of ASCII characters */
-
-                Romaji(characters, utauPlugin);
-            } else
-            {
-                /* usage of Shift-JIS characters */
-
-                Hiragana(characters, utauPlugin);
-            }
+            DetermineType(characters, utauPlugin);
         }
+
+        /* function used if input is in romaji format */
 
         static void Romaji(string characters, UtauPlugin utauPlugin)
         {
+            string newCharacters = "";
 
+            while (characters.Contains(' '))
+            {
+
+                if (characters.Substring(0, 2).Contains(' '))
+                {
+                    /* vowels only */
+
+                    newCharacters += ConvertToHiragana(characters.Substring(0, 1));
+                    characters = characters.Substring(2);
+
+                }
+                else if (characters.Substring(0, 3).Contains(' '))
+                {
+                    /* short phonemes */
+
+                    newCharacters += ConvertToHiragana(characters.Substring(0, 2));
+                    characters = characters.Substring(3);
+
+                }
+                else
+                {
+                    /* long phonemes */
+
+                    newCharacters += ConvertToHiragana(characters.Substring(0, 3));
+                    characters = characters.Substring(4);
+                }
+
+                newCharacters += " ";
+            }
+
+            Hiragana(newCharacters, utauPlugin);
         }
+
+        /* function used if input is in hiragana format */
         static void Hiragana(string characters, UtauPlugin utauPlugin)
         {
-
-            //TODO exception handling during debug testing
 
             int index = 0;
             string lyric = "";
@@ -80,9 +125,9 @@ namespace VCVLyricInserter
             {
                 if (characters.Substring(0, 2).Contains(' '))
                 {
-                    /* short vowels */
+                    /* short phonemes */
                     
-                    lyric += DetermineVowel(previousPhoneme);
+                    lyric += DetermineHiraganaVowel(previousPhoneme);
                     previousPhoneme = characters.Substring(0, 1);
 
                     lyric += " ";
@@ -91,9 +136,9 @@ namespace VCVLyricInserter
 
                 } else
                 {
-                    /* long vowels */
+                    /* long phonemes */
 
-                    lyric += DetermineVowel(previousPhoneme);
+                    lyric += DetermineHiraganaVowel(previousPhoneme);
                     previousPhoneme = characters.Substring(0, 2);
 
                     lyric += " ";
@@ -110,20 +155,22 @@ namespace VCVLyricInserter
             }
         }
 
-        static string DetermineVowel(string previousPhoneme)
+        /* if input is in hiragana format, the romaji vowel is determined */
+
+        static string DetermineHiraganaVowel(string previousPhoneme)
         {
             if (previousPhoneme == "") {
                 return "-";
             }
 
-            foreach(string phoneme in A) {
+            foreach(string phoneme in hiraganaA) {
                 if (previousPhoneme == phoneme)
                 {
                     return "a";
                 }
             }
 
-            foreach(string phoneme in I)
+            foreach(string phoneme in hiraganaI)
             {
                 if (previousPhoneme == phoneme)
                 {
@@ -131,7 +178,7 @@ namespace VCVLyricInserter
                 }
             }
 
-            foreach (string phoneme in U)
+            foreach (string phoneme in hiraganaU)
             {
                 if (previousPhoneme == phoneme)
                 {
@@ -139,7 +186,7 @@ namespace VCVLyricInserter
                 }
             }
 
-            foreach (string phoneme in E)
+            foreach (string phoneme in hiraganaE)
             {
                 if (previousPhoneme == phoneme)
                 {
@@ -147,7 +194,7 @@ namespace VCVLyricInserter
                 }
             }
             
-            foreach (string phoneme in O)
+            foreach (string phoneme in hiraganaO)
             {
                 if (previousPhoneme == phoneme)
                 {
@@ -158,6 +205,108 @@ namespace VCVLyricInserter
             return "n";
 
         }
-            
+
+        static string ConvertToHiragana(string substring)
+        {
+            //TODO convert this to hiragana using the romaji and hiragana arrays
+
+            for (int i = 0; i < romajiA.Length; i++)
+            {
+                if (substring == romajiA[i])
+                {
+                    return hiraganaA[i];
+                }
+            }
+
+            for (int i = 0; i < romajiI.Length; i++)
+            {
+                if (substring == romajiI[i])
+                {
+                    return hiraganaI[i];
+                }
+            }
+
+            for (int i = 0; i < romajiU.Length; i++)
+            {
+                if (substring == romajiU[i])
+                {
+                    return hiraganaU[i];
+                }
+            }
+
+            for (int i = 0; i < romajiE.Length; i++)
+            {
+                if (substring == romajiE[i])
+                {
+                    return hiraganaE[i];
+                }
+            }
+
+            for (int i = 0; i < romajiO.Length; i++)
+            {
+                if (substring == romajiO[i])
+                {
+                    return hiraganaO[i];
+                }
+            }
+
+            return "ん";
+
+        }
+
+        static void DetermineType(string characters, UtauPlugin utauPlugin)
+        {
+            bool hiragana = true;
+
+            foreach (string phoneme in romajiA)
+            {
+                if (characters.Substring(0, 1) == phoneme.Substring(0, 1))
+                {
+                    hiragana = false;
+                }
+            }
+
+            foreach (string phoneme in romajiI)
+            {
+                if (characters.Substring(0, 1) == phoneme.Substring(0, 1))
+                {
+                    hiragana = false;
+                }
+            }
+
+            foreach (string phoneme in romajiU)
+            {
+                if (characters.Substring(0, 1) == phoneme.Substring(0, 1))
+                {
+                    hiragana = false;
+                }
+            }
+
+            foreach (string phoneme in romajiE)
+            {
+                if (characters.Substring(0, 1) == phoneme.Substring(0, 1))
+                {
+                    hiragana = false;
+                }
+            }
+
+            foreach (string phoneme in romajiO)
+            {
+                if (characters.Substring(0, 1) == phoneme.Substring(0, 1))
+                {
+                    hiragana = false;
+                }
+            }
+
+            if (!hiragana)
+            {
+                Romaji(characters, utauPlugin);
+            } else
+            {
+                Hiragana(characters, utauPlugin);
+            }
+
+        }
+
     }
 }
