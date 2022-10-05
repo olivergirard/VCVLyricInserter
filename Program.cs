@@ -8,6 +8,7 @@ namespace VCVLyricInserter
 {
 
     //TODO work on ignoring rests, notes with lyric "R" or "r"
+    //TODO fix first note issue
     class Program
     {
 
