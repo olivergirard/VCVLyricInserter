@@ -7,7 +7,6 @@ using System.Text;
 namespace VCVLyricInserter
 {
 
-    //TODO work on ignoring rests, notes with lyric "R" or "r"
     //TODO fix first note issue
     class Program
     {
@@ -120,39 +119,50 @@ namespace VCVLyricInserter
 
             int index = 0;
             string lyric = "";
-            string previousPhoneme = "";
+            string previousPhoneme = "-";
+            Note note = utauPlugin.note[0];
 
-            while (characters.Contains(' '))
+            while ((characters.Contains(' ')) && (note != null))
             {
-                if (characters.Substring(0, 2).Contains(' '))
+
+                if (note.GetLyric().ToUpper() == "R")
                 {
-                    /* short phonemes */
-                    
-                    lyric += DetermineHiraganaVowel(previousPhoneme);
-                    previousPhoneme = characters.Substring(0, 1);
-
-                    lyric += " ";
-                    lyric += characters.Substring(0, 1);
-                    characters = characters.Substring(2);
-
-                } else
-                {
-                    /* long phonemes */
-
-                    lyric += DetermineHiraganaVowel(previousPhoneme);
-                    previousPhoneme = characters.Substring(0, 2);
-
-                    lyric += " ";
-                    lyric += characters.Substring(0, 2);
-                    characters = characters.Substring(3);
+                    lyric = "R";
+                    previousPhoneme = "-";
                 }
+                else
+                {
 
-                Note note = utauPlugin.note[index];
+                    if (characters.Substring(0, 2).Contains(' '))
+                    {
+                        /* short phonemes */
+
+                        lyric += DetermineHiraganaVowel(previousPhoneme);
+                        previousPhoneme = characters.Substring(0, 1);
+
+                        lyric += " ";
+                        lyric += characters.Substring(0, 1);
+                        characters = characters.Substring(2);
+
+                    }
+                    else
+                    {
+                        /* long phonemes */
+
+                        lyric += DetermineHiraganaVowel(previousPhoneme);
+                        previousPhoneme = characters.Substring(0, 2);
+
+                        lyric += " ";
+                        lyric += characters.Substring(0, 2);
+                        characters = characters.Substring(3);
+                    }
+                }
 
                 note.SetLyric(lyric);
 
                 lyric = "";
                 index++;
+                note = utauPlugin.note[index];
             }
         }
 
@@ -160,9 +170,6 @@ namespace VCVLyricInserter
 
         static string DetermineHiraganaVowel(string previousPhoneme)
         {
-            if (previousPhoneme == "") {
-                return "-";
-            }
 
             foreach(string phoneme in hiraganaA) {
                 if (previousPhoneme == phoneme)
