@@ -6,8 +6,6 @@ using System.Text;
 
 namespace VCVLyricInserter
 {
-
-    //TODO fix first note issue
     class Program
     {
 
@@ -175,7 +173,7 @@ namespace VCVLyricInserter
             }
         }
 
-        /* if input is in hiragana format, the romaji vowel is determined */
+        /* determines romaji vowel from hiragana input */
 
         static string DetermineHiraganaVowel(string previousPhoneme)
         {
@@ -228,6 +226,8 @@ namespace VCVLyricInserter
 
         }
 
+        /* converts romaji to hiragana */
+
         static string ConvertToHiragana(string substring)
         {
 
@@ -274,6 +274,9 @@ namespace VCVLyricInserter
             return "ん";
 
         }
+
+        /* determines whether the first note is in hiragana or romaji
+         * assumes the rest of the input is correctly formatted */
 
         static void DetermineType(string characters, UtauPlugin utauPlugin)
         {
