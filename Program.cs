@@ -162,7 +162,16 @@ namespace VCVLyricInserter
 
                 lyric = "";
                 index++;
-                note = utauPlugin.note[index];
+
+                try
+                {
+                    note = utauPlugin.note[index];
+                } 
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    note = null;
+                }
+               
             }
         }
 
@@ -170,6 +179,11 @@ namespace VCVLyricInserter
 
         static string DetermineHiraganaVowel(string previousPhoneme)
         {
+
+            if (previousPhoneme == "-")
+            {
+                return "-";
+            }
 
             foreach(string phoneme in hiraganaA) {
                 if (previousPhoneme == phoneme)
@@ -216,7 +230,6 @@ namespace VCVLyricInserter
 
         static string ConvertToHiragana(string substring)
         {
-            //TODO convert this to hiragana using the romaji and hiragana arrays
 
             for (int i = 0; i < romajiA.Length; i++)
             {
