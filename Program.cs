@@ -67,8 +67,6 @@ namespace VCVLyricInserter
                VCV(utauPlugin);
            }
 
-            char firstSound = char.Parse(characters.Substring(0, 1));
-
             DetermineType(characters, utauPlugin);
         }
 
