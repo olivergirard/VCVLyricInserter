@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VCVLyricInserter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5c38232fd4291fdb8a296c7b68bafb30e7236cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("VCVLyricInserter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VCVLyricInserter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

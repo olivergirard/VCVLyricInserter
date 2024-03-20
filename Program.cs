@@ -3,6 +3,7 @@ using UtauVoiceBank;
 using Wave;
 using System;
 using System.Text;
+using System.Linq;
 
 namespace VCVLyricInserter
 {
@@ -13,7 +14,7 @@ namespace VCVLyricInserter
 
         static string[] hiraganaA = { "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ", "が", "ざ", "だ", "ば", "ぱ", "きゃ", "ぎゃ", "にゃ", "ひゃ", "びゃ", "ぴゃ", "みゃ", "りゃ", "じゃ", "ちゃ", "しゃ" };
 
-        static string[] hiraganaI = {"い", "き", "し", "ち", "に", "ひ", "み", "り", "ぎ", "じ", "び", "ぴ" };
+        static string[] hiraganaI = { "い", "き", "し", "ち", "に", "ひ", "み", "り", "ぎ", "じ", "び", "ぴ" };
 
         static string[] hiraganaU = { "う", "く", "す", "つ", "ぬ", "ふ", "む", "ゆ", "る", "ぐ", "ず", "ぶ", "ぷ", "きゅ", "ぎゅ", "にゅ", "ひゅ", "びゅ", "ぴゅ", "みゅ", "りゅ", "じゅ", "ちゅ", "しゅ" };
 
@@ -61,11 +62,11 @@ namespace VCVLyricInserter
 
             /* removes spaces */
 
-           if (characters.Contains(' ') == false)
-           {
-               Console.WriteLine("It seems there was an error. Please make sure your lyrics are formatted correctly and try again.");
-               VCV(utauPlugin);
-           }
+            if (characters.Contains(' ') == false)
+            {
+                Console.WriteLine("It seems there was an error. Please make sure your lyrics are formatted correctly and try again.");
+                VCV(utauPlugin);
+            }
 
             DetermineType(characters, utauPlugin);
         }
@@ -162,12 +163,12 @@ namespace VCVLyricInserter
                 try
                 {
                     note = utauPlugin.note[index];
-                } 
+                }
                 catch (System.ArgumentOutOfRangeException)
                 {
                     note = null;
                 }
-               
+
             }
         }
 
@@ -181,14 +182,15 @@ namespace VCVLyricInserter
                 return "-";
             }
 
-            foreach(string phoneme in hiraganaA) {
+            foreach (string phoneme in hiraganaA)
+            {
                 if (previousPhoneme == phoneme)
                 {
                     return "a";
                 }
             }
 
-            foreach(string phoneme in hiraganaI)
+            foreach (string phoneme in hiraganaI)
             {
                 if (previousPhoneme == phoneme)
                 {
@@ -211,7 +213,7 @@ namespace VCVLyricInserter
                     return "e";
                 }
             }
-            
+
             foreach (string phoneme in hiraganaO)
             {
                 if (previousPhoneme == phoneme)
@@ -323,7 +325,8 @@ namespace VCVLyricInserter
             if (!hiragana)
             {
                 Romaji(characters, utauPlugin);
-            } else
+            }
+            else
             {
                 Hiragana(characters, utauPlugin);
             }
@@ -332,3 +335,4 @@ namespace VCVLyricInserter
 
     }
 }
+
